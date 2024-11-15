@@ -1,5 +1,12 @@
 # Alphabet Navigation
 
+![](https://github.com/user-attachments/assets/f02d6c2b-c101-462e-afb4-befd0ce1761f)
+
+[![License](https://img.shields.io/github/license/DeveloperKits/alphabet_navigation?style=flat-square)](https://github.com/DeveloperKits/alphabet_navigation?tab=MIT-1-ov-file)
+[![GitHub Contributors](https://img.shields.io/github/contributors/DeveloperKits/alphabet_navigation)](https://github.com/DeveloperKits/alphabet_navigation/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/DeveloperKits/alphabet_navigation?style=social)](https://pub.dev/packages/alphabet_navigation)
+[![GitHub Closed Issues](https://img.shields.io/github/issues-closed-raw/DeveloperKits/alphabet_navigation)](https://github.com/DeveloperKits/alphabet_navigation/issues?q=is%3Aissue+is%3Aclosed)
+
 `alphabet_navigation` is a Flutter package that provides a dynamic, scrollable list view with an alphabetical index. It’s perfect for apps that need a quick and intuitive way to navigate long lists by alphabet.
 
 ---
@@ -17,6 +24,15 @@
 ## Installation
 
 To use the `alphabet_navigation` package, follow these steps:
+
+Run this on your project terminal:
+
+```yaml
+flutter pub add alphabet_navigation
+```
+
+or manually configure pubspec.yml file
+
 
 1. Add the package to your `pubspec.yaml` file:
    ```yaml
