@@ -1,49 +1,148 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Alphabet Navigation
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+`alphabet_navigation` is a Flutter package that provides a dynamic, scrollable list view with an alphabetical index. It’s perfect for apps that need a quick and intuitive way to navigate long lists by alphabet.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+---
+
+## Features
+
+- [x] A vertical alphabetical navigation bar for quick access to sections.
+- [x] Smooth scrolling to the desired section when an alphabet is selected.
+- [x] Fully customizable list items and navigation styles.
+- [x] Lightweight and easy to integrate into any Flutter project.
+- [x] Compatible with both iOS and Android platforms.
+
+---
+
+## Installation
+
+To use the `alphabet_navigation` package, follow these steps:
+
+1. Add the package to your `pubspec.yaml` file:
+   ```yaml
+   dependencies:
+     alphabet_navigation: ^1.0.0
+   ```
+
+2. Run the following command to get the package:
+   ```yaml
+   flutter pub get
+   ```
+
+---
+
+## Usage
+
+Here’s how you can use the `AlphabetNavigation` widget in your app:
+```dart
+class AlphabetListViewExample extends StatelessWidget {
+  const AlphabetListViewExample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // A sample list of items to display
+    List<String> stringList = [
+      'Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape',
+      'Honeydew', 'Iceberg Lettuce', 'Jackfruit', 'Kiwi', 'Lemon', 'Mango',
+      'Nectarine', 'Orange', 'Papaya', 'Quince', 'Raspberry', 'Strawberry',
+      'Tomato', 'Ugli Fruit', 'Vanilla Bean', 'Watermelon', 'Xigua', 'Yam', 'Zucchini'
+    ];
+
+    // The dynamic list (can be more complex, such as objects)
+    List<dynamic> dynamicList = stringList;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Alphabet List View Example'),
+        centerTitle: true,
+      ),
+
+      body: AlphabetNavigation(
+        stringList: stringList, // Pass the string list for alphabet mapping
+        dynamicList: dynamicList, // Pass the dynamic list for content
+        itemBuilder: (context, index) {
+          // Build the item widget
+          return ListTile(
+            dense: true,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            title: Text(
+              dynamicList[index],
+              style: const TextStyle(fontSize: 18),
+            ),
+            leading: CircleAvatar(
+              backgroundColor: Colors.blueAccent,
+              child: Text(
+                dynamicList[index][0],
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+          );
+        },
+      ),
+    );
+  }
+}
+```
+
+### Parameters
+
+| Parameter     | Type                        | Description                                 |
+|---------------|-----------------------------|---------------------------------------------|
+| `stringList`  | `List<String>`              | List of strings for alphabetical grouping.  |
+| `dynamicList` | `List<dynamic>`             | Data list to be displayed.                  |
+| `backgroundColor` | `Color` | Alphabet list Background color |
+| `selectedColor` | `Color` | Selected alphabet color |
+| `unselectedColor` | `Color` | Unselected alphabet color |
+| `itemBuilder` | `Function(BuildContext, int)` | Function to build list items dynamically.   |
+
+---
+ 
 ## Demo 
 https://github.com/user-attachments/assets/8f61ac4c-4937-4c98-b86d-36bf86ac0acd
 
 
 ## Screenshot
-![](https://github.com/user-attachments/assets/d789dfda-1937-450c-9521-714b0732790c)
-![](https://github.com/user-attachments/assets/bcb6af54-c070-4f71-8568-50511f54e984)
-![Screenshot_20241115_224839](https://github.com/user-attachments/assets/cae954e8-a6cc-4e45-87b9-301ab7d4eb5d)
 
+|                                                            Drug by generic                                                             |                                                           Drug by class                                                            |                                                  Alphabet List Demo                                                                    |
+|:-------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/user-attachments/assets/d789dfda-1937-450c-9521-714b0732790c" width = "250"> | <img src="https://github.com/user-attachments/assets/bcb6af54-c070-4f71-8568-50511f54e984" width = "250"> | <img src="https://github.com/user-attachments/assets/cae954e8-a6cc-4e45-87b9-301ab7d4eb5d" width = "250"> |
 
+---
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Future Plans
 
-## Features
+Here are some planned features for future releases:
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- **Search Functionality:** Built-in search bar for filtering items dynamically.
+- **Theme Options:** Allow users to easily configure colors, fonts, and styles.
+- **Accessibility Improvements:** Enhanced support for voice-over and screen readers.
+- **Horizontal Navigation:** Add support for horizontal alphabetical navigation.
+- **Custom Alphabet Set:** Support for custom navigation sets like ['A', 'B', 'C', '1', '2', '3'].
+- **Multi-Language Support:** Enable alphabetical navigation for other languages.
 
-## Getting started
+---
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Contributing
 
-## Usage
+We welcome contributions from the community! If you encounter any issues or have feature suggestions, feel free to open an issue or submit a pull request on our GitHub repository.
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
+---
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+- [Alphabet Navigation (pub.dev)](https://pub.dev/packages/alphabet_navigation)
+- [Alphabet Navigation (GitHub)](https://github.com/DeveloperKits/alphabet_navigation)
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### CONTRIBUTORS
+
+[![Contributors](https://contrib.rocks/image?repo=DeveloperKits/alphabet_navigation)](https://github.com/DeveloperKits/alphabet_navigation/graphs/contributors)
+<br/>
+[**Akash Das**](https://github.com/DeveloperKits) 
+
+### Happy Coding 👨‍💻
+
