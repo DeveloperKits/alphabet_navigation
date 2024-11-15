@@ -11,14 +11,14 @@ class AlphabetNavigation extends StatefulWidget {
   final Function(BuildContext, int) itemBuilder; // Item builder for dynamic list
 
   const AlphabetNavigation({
-    super.key,
+    Key? key,
     required this.stringList,
     required this.dynamicList,
     this.backgroundColor = const Color(0xFF56A3A6),
     this.selectedColor = const Color(0xFF014D41),
     this.unselectedColor = const Color(0xFFF6FDFF),
     required this.itemBuilder,
-  });
+  }) : super(key: key);
 
   @override
   _AlphabetNavigationState createState() => _AlphabetNavigationState();
