@@ -1,7 +1,7 @@
 name: alphabet_navigation
-description: "A new Flutter package project."
+description: "A Flutter package that provides an alphabetically indexed list view."
 version: 0.0.1
-homepage:
+homepage: https://github.com/DeveloperKits/alphabet_navigation
 
 environment:
   sdk: '>=3.3.1 <4.0.0'
