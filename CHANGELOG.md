@@ -7,3 +7,10 @@
 * Lightweight and easy to integrate into any Flutter project.
 * Compatible with both iOS and Android platforms.
 
+## 1.0.1
+
+* Updated dependencies
+* Update Alphabetic list direction to left
+* Update selected Alphabetic list style
+* More customization
+* Added support for all platforms
