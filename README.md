@@ -17,7 +17,7 @@
 - [x] Smooth scrolling to the desired section when an alphabet is selected.
 - [x] Fully customizable list items and navigation styles.
 - [x] Lightweight and easy to integrate into any Flutter project.
-- [x] Compatible with both iOS and Android platforms.
+- [x] Compatible with all platforms.
 
 ---
 
@@ -56,7 +56,7 @@ class AlphabetListViewExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // A sample list of items to display
+    /// A sample list of items to display
     List<String> stringList = [
       'Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape',
       'Honeydew', 'Iceberg Lettuce', 'Jackfruit', 'Kiwi', 'Lemon', 'Mango',
@@ -64,7 +64,7 @@ class AlphabetListViewExample extends StatelessWidget {
       'Tomato', 'Ugli Fruit', 'Vanilla Bean', 'Watermelon', 'Xigua', 'Yam', 'Zucchini'
     ];
 
-    // The dynamic list (can be more complex, such as objects)
+    /// The dynamic list (can be more complex, such as objects)
     List<dynamic> dynamicList = stringList;
 
     return Scaffold(
@@ -72,12 +72,15 @@ class AlphabetListViewExample extends StatelessWidget {
         title: const Text('Alphabet List View Example'),
         centerTitle: true,
       ),
-
       body: AlphabetNavigation(
-        stringList: stringList, // Pass the string list for alphabet mapping
-        dynamicList: dynamicList, // Pass the dynamic list for content
+        stringList: stringList, /// Pass the string list for alphabet mapping
+        dynamicList: dynamicList, /// Pass the dynamic list for content
+        backgroundColor: Colors.blue, /// Background color for alphabet list
+        selectedColor: Colors.white, /// Selected alphabet color
+        circleSelectedLetter: true, /// Circle background color for the selected letter
+        listDirectionLeft: true, /// Direction of the list. If true, the list will be from right to left
         itemBuilder: (context, index) {
-          // Build the item widget
+          /// Build the item widget
           return ListTile(
             dense: true,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -120,9 +123,9 @@ https://github.com/user-attachments/assets/8f61ac4c-4937-4c98-b86d-36bf86ac0acd
 
 ## Screenshot
 
-|                                                            Drug by generic                                                             |                                                           Drug by class                                                            |                                                  Alphabet List Demo                                                                    |
+|                                                            Circular Selected Item                                                             |                                                           Drug by class                                                            |                                                  List Direction Left                                                                    |
 |:-------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/user-attachments/assets/d789dfda-1937-450c-9521-714b0732790c" width = "250"> | <img src="https://github.com/user-attachments/assets/bcb6af54-c070-4f71-8568-50511f54e984" width = "250"> | <img src="https://github.com/user-attachments/assets/cae954e8-a6cc-4e45-87b9-301ab7d4eb5d" width = "250"> |
+| <img src="https://github.com/user-attachments/assets/d789dfda-1937-450c-9521-714b0732790c" width = "250"> | <img src="https://github.com/user-attachments/assets/58fef2b1-30d5-46a5-9b39-dfcd383e5229" width = "250"> | <img src="https://github.com/user-attachments/assets/243c432c-cfe2-44c0-87b7-3dd60220d56d" width = "250"> |
 
 ---
 
