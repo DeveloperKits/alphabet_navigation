@@ -2,21 +2,48 @@ library alphabet_navigation;
 
 import 'package:flutter/material.dart';
 
-class AlphabetNavigation extends StatefulWidget {
-  final List<String> stringList; // List of strings (for mapping alphabet positions)
-  final List<dynamic> dynamicList; // The actual data (genericList, classList, etc.)
-  final Color backgroundColor; // alphabet list Background color
-  final Color selectedColor; // Selected alphabet color
-  final Color unselectedColor; // Unselected alphabet color
-  final Function(BuildContext, int) itemBuilder; // Item builder for dynamic list
 
+class AlphabetNavigation extends StatefulWidget {
+  final List<String> stringList;
+  final List<dynamic> dynamicList;
+
+  final bool listDirectionLeft;
+
+  final Color backgroundColor;
+  final Color selectedColor;
+  final Color unselectedColor;
+
+  final bool circleSelectedLetter;
+  final Color circleSelectedBackgroundColor;
+  final double circleBorderRadius;
+
+
+  final Function(BuildContext, int) itemBuilder;
+
+  /// A Flutter package that provides a dynamic, scrollable list view with an alphabetical index.
+  ///
+  /// #### Params:
+  /// * [stringList] List of strings (for mapping alphabet positions)
+  /// * [dynamicList] List of dynamic data (actual data to be displayed)
+  /// * [listDirectionLeft] Direction of the list. If true, the list will be from right to left (optional)
+  /// * [backgroundColor] Background color (optional)
+  /// * [selectedColor] Selected alphabet color (optional)
+  /// * [unselectedColor] Unselected alphabet color (optional)
+  /// * [circleSelectedLetter] Circle the selected letter (optional)
+  /// * [circleSelectedBackgroundColor] Background color for the selected letter (optional)
+  /// * [circleBorderRadius] Border radius for the selected letter circle (optional)
+  /// * [itemBuilder] Item builder for dynamic list which returns a [Widget] for each item
   const AlphabetNavigation({
     Key? key,
     required this.stringList,
     required this.dynamicList,
+    this.listDirectionLeft = false,
     this.backgroundColor = const Color(0xFF56A3A6),
     this.selectedColor = const Color(0xFF014D41),
     this.unselectedColor = const Color(0xFFF6FDFF),
+    this.circleSelectedLetter = false,
+    this.circleSelectedBackgroundColor = Colors.amberAccent,
+    this.circleBorderRadius = 8,
     required this.itemBuilder,
   }) : super(key: key);
 
@@ -72,52 +99,96 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // Dynamic List View
-        Expanded(
-          child: ListView.builder(
-            controller: _scrollController,
-            itemCount: widget.dynamicList.length,
-            itemExtent: 60,
-            itemBuilder: (context, index) {
-              return widget.itemBuilder(context, index);
-            },
-          ),
-        ),
+    return widget.listDirectionLeft
+        ? Row(
+            children: [
+              _alphabetList(leftMargin: 3, rightMargin: 0),
+              _dynamicList(),
+            ],
+          )
+        : Row(
+            children: [
+              _dynamicList(),
+              _alphabetList(leftMargin: 0, rightMargin: 3),
+            ],
+          );
+  }
 
-        // Alphabet Navigation Bar
-        Container(
-          margin: const EdgeInsets.only(right: 2, top: 10, bottom: 10),
-          decoration: BoxDecoration(
-            color: widget.backgroundColor,
-            borderRadius: BorderRadius.circular(10),
-          ),
+  Widget _dynamicList() {
+    return Expanded(
+      child: ListView.builder(
+        controller: _scrollController,
+        itemCount: widget.dynamicList.length,
+        itemExtent: 60,
+        itemBuilder: (context, index) {
+          return widget.itemBuilder(context, index);
+        },
+      ),
+    );
+  }
 
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: _alphabetMap.keys.map((letter) {
-                return GestureDetector(
-                  onTap: () => _scrollToLetter(letter),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
-                    child: Text(
-                      letter,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: _selectedAlphabet == letter
-                            ? widget.selectedColor
-                            : widget.unselectedColor,
-                      ),
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
-          ),
+  Widget _alphabetList({required double leftMargin, required double rightMargin}) {
+    return Container(
+      margin: EdgeInsets.only(left: leftMargin, right: rightMargin, top: 10, bottom: 10),
+      decoration: BoxDecoration(
+        color: widget.backgroundColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
+
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: _alphabetMap.keys.map((letter) {
+            return GestureDetector(
+              onTap: () => _scrollToLetter(letter),
+              child: widget.circleSelectedLetter
+                  ? _circleAlphaList(letter)
+                  : _normalAlphaList(letter),
+            );
+          }).toList(),
         ),
-      ],
+      ),
+    );
+  }
+
+  Widget _circleAlphaList(String letter) {
+    return Container(
+      height: 30,
+      width: 30,
+      margin: const EdgeInsets.symmetric(vertical: 3.0, horizontal: 3.0),
+      padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 4.0),
+      decoration: BoxDecoration(
+        color: _selectedAlphabet == letter
+            ? widget.circleSelectedBackgroundColor
+            : Colors.transparent,
+        borderRadius: BorderRadius.circular(widget.circleBorderRadius),
+      ),
+      child: Text(
+        letter,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 16,
+          color: _selectedAlphabet == letter
+              ? widget.selectedColor
+              : widget.unselectedColor,
+        ),
+      ),
+    );
+  }
+
+  Widget _normalAlphaList(String letter) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 6.0),
+      child: Text(
+        letter,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 16,
+          color: _selectedAlphabet == letter
+              ? widget.selectedColor
+              : widget.unselectedColor,
+        ),
+      ),
     );
   }
 
