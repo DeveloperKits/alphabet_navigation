@@ -47,9 +47,10 @@ class AlphabetListViewExample extends StatelessWidget {
         stringList: stringList, /// Pass the string list for alphabet mapping
         dynamicList: dynamicList, /// Pass the dynamic list for content
         backgroundColor: Colors.blue, /// Background color for alphabet list
-        selectedColor: Colors.white,
+        selectedColor: Colors.white, /// Selected alphabet color
         circleSelectedLetter: true, /// Circle background color for the selected letter
         listDirectionLeft: true, /// Direction of the list. If true, the list will be from right to left
+        circleBorderRadius: 8, /// Border radius for the selected letter circle
         itemBuilder: (context, index) {
           /// Build the item widget
           return ListTile(

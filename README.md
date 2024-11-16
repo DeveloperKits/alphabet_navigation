@@ -79,6 +79,7 @@ class AlphabetListViewExample extends StatelessWidget {
         selectedColor: Colors.white, /// Selected alphabet color
         circleSelectedLetter: true, /// Circle background color for the selected letter
         listDirectionLeft: true, /// Direction of the list. If true, the list will be from right to left
+        circleBorderRadius: 8, /// Border radius for the selected letter circle
         itemBuilder: (context, index) {
           /// Build the item widget
           return ListTile(
