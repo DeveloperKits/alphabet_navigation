@@ -9,6 +9,7 @@
 
 `alphabet_navigation` is a Flutter package that provides a dynamic, scrollable list view with an alphabetical index. It’s perfect for apps that need a quick and intuitive way to navigate long lists by alphabet.
 
+
 ---
 
 ## Features
@@ -20,6 +21,21 @@
 - [x] Compatible with all platforms.
 
 ---
+
+
+## Screenshot
+
+|                                                            Circular Selected Item                                                             |                                                           Drug by class                                                            |                                                  List Direction Left                                                                    |
+|:-------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/user-attachments/assets/d789dfda-1937-450c-9521-714b0732790c" width = "250"> | <img src="https://github.com/user-attachments/assets/58fef2b1-30d5-46a5-9b39-dfcd383e5229" width = "250"> | <img src="https://github.com/user-attachments/assets/243c432c-cfe2-44c0-87b7-3dd60220d56d" width = "250"> |
+
+|                 Mac               
+|:---------------------------------:|
+|<img src="https://github.com/user-attachments/assets/fd8b0a5b-14d4-49dc-974a-237eb7cbfdc5" width = "600">|
+
+
+---
+
 
 ## Installation
 
@@ -120,13 +136,6 @@ class AlphabetListViewExample extends StatelessWidget {
  
 ## Demo 
 https://github.com/user-attachments/assets/8f61ac4c-4937-4c98-b86d-36bf86ac0acd
-
-
-## Screenshot
-
-|                                                            Circular Selected Item                                                             |                                                           Drug by class                                                            |                                                  List Direction Left                                                                    |
-|:-------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/user-attachments/assets/d789dfda-1937-450c-9521-714b0732790c" width = "250"> | <img src="https://github.com/user-attachments/assets/58fef2b1-30d5-46a5-9b39-dfcd383e5229" width = "250"> | <img src="https://github.com/user-attachments/assets/243c432c-cfe2-44c0-87b7-3dd60220d56d" width = "250"> |
 
 ---
 
