@@ -53,21 +53,35 @@ class AlphabetListViewExample extends StatelessWidget {
         circleBorderRadius: 8, /// Border radius for the selected letter circle
         itemBuilder: (context, index) {
           /// Build the item widget
-          return ListTile(
-            dense: true,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            title: Text(
-              dynamicList[index],
-              style: const TextStyle(fontSize: 18),
+          return Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5,),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.tealAccent,
             ),
-            leading: CircleAvatar(
-              backgroundColor: Colors.blueAccent,
-              child: Text(
-                dynamicList[index][0],
-                style: const TextStyle(color: Colors.white),
+            child: ListTile(
+              dense: true,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              title: Text(
+                dynamicList[index],
+                style: const TextStyle(fontSize: 18, color: Colors.black54,),
+              ),
+              leading: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: CircleAvatar(
+                  backgroundColor: Colors.blue,
+                  child: Text(
+                    dynamicList[index][0],
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+                color: Colors.black54,
               ),
             ),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
           );
         },
       ),

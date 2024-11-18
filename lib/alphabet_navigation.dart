@@ -2,7 +2,6 @@ library alphabet_navigation;
 
 import 'package:flutter/material.dart';
 
-
 class AlphabetNavigation extends StatefulWidget {
   final List<String> stringList;
   final List<dynamic> dynamicList;
@@ -16,7 +15,6 @@ class AlphabetNavigation extends StatefulWidget {
   final bool circleSelectedLetter;
   final Color circleSelectedBackgroundColor;
   final double circleBorderRadius;
-
 
   final Function(BuildContext, int) itemBuilder;
 
@@ -54,7 +52,7 @@ class AlphabetNavigation extends StatefulWidget {
 class _AlphabetNavigationState extends State<AlphabetNavigation> {
   late ScrollController _scrollController;
   final Map<String, int> _alphabetMap = {}; // Maps alphabet to list index
-  String _selectedAlphabet = 'A'; // Default selected alphabet
+  String _selectedAlphabet = 'B'; // Default selected alphabet
 
   @override
   void initState() {
@@ -63,9 +61,14 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
     _generateAlphabetMap();
   }
 
+  /// Generates a map of alphabet to list index for faster lookup
+  /// during scrolling to an alphabet letter.
   void _generateAlphabetMap() {
-    List<String> sortedList = widget.stringList.map((e) => e.toUpperCase()).toList();
-    sortedList.sort(); // Sort by alphabet to ensure correct mapping
+    List<String> sortedList =
+        widget.stringList.map((e) => e.toUpperCase()).toList();
+
+    /// Sort by alphabet to ensure correct mapping
+    sortedList.sort();
 
     for (int i = 0; i < sortedList.length; i++) {
       String firstLetter = sortedList[i][0];
@@ -73,11 +76,16 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
         _alphabetMap[firstLetter] = i;
       }
     }
+
+    _selectedAlphabet = sortedList[0];
   }
 
+  /// Scrolls to the selected alphabet letter when an alphabet is selected.
+  /// If the letter is not found in the alphabet map, no action is taken.
   void _scrollToLetter(String letter) {
     setState(() {
-      _selectedAlphabet = letter; // Update selected alphabet
+      /// Update selected alphabet
+      _selectedAlphabet = letter;
     });
 
     int? index = _alphabetMap[letter];
@@ -85,14 +93,16 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
       double targetOffset = index * 60.0;
       double currentOffset = _scrollController.offset;
 
-      // Adjust duration based on distance, with smaller scaling
+      /// Adjust duration based on distance, with smaller scaling
       double distance = (targetOffset - currentOffset).abs();
-      int duration = (distance / 800).clamp(50, 200).toInt(); // Faster scaling
+      int duration = (distance / 800).clamp(50, 200).toInt();
 
       _scrollController.animateTo(
         targetOffset,
         duration: Duration(milliseconds: duration),
-        curve: Curves.linear, // Constant speed
+
+        /// Constant speed
+        curve: Curves.linear,
       );
     }
   }
@@ -114,6 +124,9 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
           );
   }
 
+  /// Builds the dynamic list view based on the widget's `dynamicList` property.
+  /// This list is scrollable and the list items are generated using the
+  /// `itemBuilder` property.
   Widget _dynamicList() {
     return Expanded(
       child: ListView.builder(
@@ -127,14 +140,23 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
     );
   }
 
-  Widget _alphabetList({required double leftMargin, required double rightMargin}) {
+  /// Builds the alphabet list view using the `backgroundColor`,
+  /// `circleSelectedLetter`, and `circleSelectedBackgroundColor` properties.
+  /// This list is scrollable and the list items are generated using the
+  /// `normalAlphaList` and `circleAlphaList` functions.
+  Widget _alphabetList(
+      {required double leftMargin, required double rightMargin}) {
     return Container(
-      margin: EdgeInsets.only(left: leftMargin, right: rightMargin, top: 10, bottom: 10),
+      margin: EdgeInsets.only(
+        left: leftMargin,
+        right: rightMargin,
+        top: 10,
+        bottom: 10,
+      ),
       decoration: BoxDecoration(
         color: widget.backgroundColor,
         borderRadius: BorderRadius.circular(10),
       ),
-
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -151,6 +173,10 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
     );
   }
 
+  /// Builds the circle alpha list view using the `circleSelectedBackgroundColor`,
+  /// `circleBorderRadius`, and `selectedColor` properties.
+  /// This list is scrollable and the list items are generated using the
+  /// `Text` widget.
   Widget _circleAlphaList(String letter) {
     return Container(
       height: 30,
@@ -176,6 +202,9 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
     );
   }
 
+  /// Builds the normal alpha list view using the `unselectedColor` property.
+  /// This list is scrollable and the list items are generated using the
+  /// `Text` widget.
   Widget _normalAlphaList(String letter) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 6.0),
@@ -198,4 +227,3 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
     super.dispose();
   }
 }
-
