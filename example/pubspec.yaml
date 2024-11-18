@@ -1,6 +1,8 @@
 name: example
 description: "Example app for the alphabet_listview package."
 
+publish_to: 'none'
+
 version: 1.0.0+1
 
 environment:
@@ -16,6 +18,9 @@ dependencies:
   cupertino_icons: ^1.0.6
 
 dev_dependencies:
+  alphabet_navigation:
+    path: ../
+
   flutter_test:
     sdk: flutter
 
@@ -24,11 +29,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
-
-
-  alphabet_navigation:
-    path: ../
+  flutter_lints: ^2.0.0
 
 
 flutter:

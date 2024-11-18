@@ -49,11 +49,12 @@ class AlphabetListViewExample extends StatelessWidget {
         backgroundColor: Colors.blue, /// Background color for alphabet list
         selectedColor: Colors.white, /// Selected alphabet color
         circleSelectedLetter: true, /// Circle background color for the selected letter
-        listDirectionLeft: true, /// Direction of the list. If true, the list will be from right to left
+        listDirectionLeft: false, /// Direction of the list. If true, the list will be from right to left
         circleBorderRadius: 8, /// Border radius for the selected letter circle
         itemBuilder: (context, index) {
           /// Build the item widget
           return Container(
+            alignment: Alignment.center,
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5,),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),

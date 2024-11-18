@@ -52,7 +52,7 @@ class AlphabetNavigation extends StatefulWidget {
 class _AlphabetNavigationState extends State<AlphabetNavigation> {
   late ScrollController _scrollController;
   final Map<String, int> _alphabetMap = {}; // Maps alphabet to list index
-  String _selectedAlphabet = 'B'; // Default selected alphabet
+  String _selectedAlphabet = 'A'; // Default selected alphabet
 
   @override
   void initState() {
@@ -77,7 +77,9 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
       }
     }
 
-    _selectedAlphabet = sortedList[0];
+    setState(() {
+      _selectedAlphabet = _alphabetMap.keys.first;
+    });
   }
 
   /// Scrolls to the selected alphabet letter when an alphabet is selected.
@@ -90,7 +92,7 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
 
     int? index = _alphabetMap[letter];
     if (index != null) {
-      double targetOffset = index * 60.0;
+      double targetOffset = index * 70.0;
       double currentOffset = _scrollController.offset;
 
       /// Adjust duration based on distance, with smaller scaling
@@ -132,7 +134,7 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
       child: ListView.builder(
         controller: _scrollController,
         itemCount: widget.dynamicList.length,
-        itemExtent: 60,
+        itemExtent: 70,
         itemBuilder: (context, index) {
           return widget.itemBuilder(context, index);
         },
