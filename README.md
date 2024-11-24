@@ -96,9 +96,9 @@ class AlphabetListViewExample extends StatelessWidget {
         backgroundColor: Colors.blue, /// Background color for alphabet list (optional)
         selectedColor: Colors.white, /// Selected alphabet color (optional)
         unselectedColor: Colors.grey, /// Unselected alphabet color (optional)
-        circleSelectedLetter: true, /// Is circle apply for the selected letter.
+        circleSelectedLetter: true, /// Is circle apply for the selected letter. (optional)
         circleSelectedBackgroundColor: Colors.blue, /// Circle background color for the selected letter (optional)
-        circleBorderRadius: 8, /// Border radius for the selected letter circle
+        circleBorderRadius: 8, /// Border radius for the selected letter circle (optional)
         itemBuilder: (context, index) {
           /// Build the item widget
           return ListTile(
