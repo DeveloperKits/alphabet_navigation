@@ -2,11 +2,23 @@ library alphabet_navigation;
 
 import 'package:flutter/material.dart';
 
+/// Alphabet list direction enum for more customization.
+/// If left, the list will be from right to left.
+/// If right, the list will be from left to right.
+enum ListDirection { left, right }
+
+/// A Flutter package that provides a dynamic, scrollable list view with an alphabetical index.
+///
+/// #### Params: required
+/// * [stringList] List of strings (for mapping alphabet positions)
+/// * [dynamicList] List of dynamic data (actual data to be displayed)
+/// * [itemBuilder] Item builder function that builds the dynamic list items.
 class AlphabetNavigation extends StatefulWidget {
   final List<String> stringList;
   final List<dynamic> dynamicList;
+  final double dynamicListHeight;
 
-  final bool listDirectionLeft;
+  final ListDirection listDirection;
 
   final Color backgroundColor;
   final Color selectedColor;
@@ -23,11 +35,12 @@ class AlphabetNavigation extends StatefulWidget {
   /// #### Params:
   /// * [stringList] List of strings (for mapping alphabet positions)
   /// * [dynamicList] List of dynamic data (actual data to be displayed)
-  /// * [listDirectionLeft] Direction of the list. If true, the list will be from right to left (optional)
+  /// * [dynamicListHeight] Height of the dynamic list (optional)
+  /// * [listDirection] Direction of the list. If [ListDirection.left], the list will be from right to left (optional)
   /// * [backgroundColor] Background color (optional)
   /// * [selectedColor] Selected alphabet color (optional)
   /// * [unselectedColor] Unselected alphabet color (optional)
-  /// * [circleSelectedLetter] Circle the selected letter (optional)
+  /// * [circleSelectedLetter] Circle for the selected letter (optional)
   /// * [circleSelectedBackgroundColor] Background color for the selected letter (optional)
   /// * [circleBorderRadius] Border radius for the selected letter circle (optional)
   /// * [itemBuilder] Item builder for dynamic list which returns a [Widget] for each item
@@ -35,7 +48,8 @@ class AlphabetNavigation extends StatefulWidget {
     Key? key,
     required this.stringList,
     required this.dynamicList,
-    this.listDirectionLeft = false,
+    this.dynamicListHeight = 70.0,
+    this.listDirection = ListDirection.right,
     this.backgroundColor = const Color(0xFF56A3A6),
     this.selectedColor = const Color(0xFF014D41),
     this.unselectedColor = const Color(0xFFF6FDFF),
@@ -50,9 +64,12 @@ class AlphabetNavigation extends StatefulWidget {
 }
 
 class _AlphabetNavigationState extends State<AlphabetNavigation> {
+  /// Scrolls to the selected alphabet letter when an alphabet is selected.
   late ScrollController _scrollController;
-  final Map<String, int> _alphabetMap = {}; // Maps alphabet to list index
-  String _selectedAlphabet = 'A'; // Default selected alphabet
+  /// Maps alphabet to list index for faster lookup
+  final Map<String, int> _alphabetMap = {};
+  /// Default selected alphabet
+  String _selectedAlphabet = 'A';
 
   @override
   void initState() {
@@ -77,6 +94,7 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
       }
     }
 
+    /// Set default selected alphabet to the first alphabet
     setState(() {
       _selectedAlphabet = _alphabetMap.keys.first;
     });
@@ -92,7 +110,9 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
 
     int? index = _alphabetMap[letter];
     if (index != null) {
-      double targetOffset = index * 70.0;
+      /// Scroll to the selected letter in the list base on [dynamicListHeight]
+      double targetOffset = index * widget.dynamicListHeight;
+      /// Get current offset
       double currentOffset = _scrollController.offset;
 
       /// Adjust duration based on distance, with smaller scaling
@@ -111,7 +131,7 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.listDirectionLeft
+    return widget.listDirection == ListDirection.left
         ? Row(
             children: [
               _alphabetList(leftMargin: 3, rightMargin: 0),
@@ -134,8 +154,9 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
       child: ListView.builder(
         controller: _scrollController,
         itemCount: widget.dynamicList.length,
-        itemExtent: 70,
+        itemExtent: widget.dynamicListHeight,
         itemBuilder: (context, index) {
+          /// Build the item widget based on the `itemBuilder` property and the index
           return widget.itemBuilder(context, index);
         },
       ),
@@ -225,6 +246,7 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
 
   @override
   void dispose() {
+    /// Dispose of the scroll controller when the widget is disposed to avoid memory leaks
     _scrollController.dispose();
     super.dispose();
   }

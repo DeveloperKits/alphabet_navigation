@@ -91,10 +91,13 @@ class AlphabetListViewExample extends StatelessWidget {
       body: AlphabetNavigation(
         stringList: stringList, /// Pass the string list for alphabet mapping
         dynamicList: dynamicList, /// Pass the dynamic list for content
-        backgroundColor: Colors.blue, /// Background color for alphabet list
-        selectedColor: Colors.white, /// Selected alphabet color
-        circleSelectedLetter: true, /// Circle background color for the selected letter
-        listDirectionLeft: true, /// Direction of the list. If true, the list will be from right to left
+        dynamicListHeight: 80, /// Dynamic list height (optional)
+        listDirection: ListDirection.left, /// Direction of the list (optional)
+        backgroundColor: Colors.blue, /// Background color for alphabet list (optional)
+        selectedColor: Colors.white, /// Selected alphabet color (optional)
+        unselectedColor: Colors.grey, /// Unselected alphabet color (optional)
+        circleSelectedLetter: true, /// Is circle apply for the selected letter.
+        circleSelectedBackgroundColor: Colors.blue, /// Circle background color for the selected letter (optional)
         circleBorderRadius: 8, /// Border radius for the selected letter circle
         itemBuilder: (context, index) {
           /// Build the item widget
@@ -123,14 +126,19 @@ class AlphabetListViewExample extends StatelessWidget {
 
 ### Parameters
 
-| Parameter     | Type                        | Description                                 |
-|---------------|-----------------------------|---------------------------------------------|
-| `stringList`  | `List<String>`              | List of strings for alphabetical grouping.  |
-| `dynamicList` | `List<dynamic>`             | Data list to be displayed.                  |
-| `backgroundColor` | `Color` | Alphabet list Background color |
-| `selectedColor` | `Color` | Selected alphabet color |
-| `unselectedColor` | `Color` | Unselected alphabet color |
-| `itemBuilder` | `Function(BuildContext, int)` | Function to build list items dynamically.   |
+| Parameter     | Type                        | Description                                      |
+|---------------|-----------------------------|--------------------------------------------------|
+| `stringList`  | `List<String>`              | List of strings for alphabetical grouping.       |
+| `dynamicList` | `List<dynamic>`             | Data list to be displayed.                       |
+| `listDirection` | `ListDirection` | Direction of the list.                           |
+| `dynamicListHeight` | `double` | Dynamic list height.                             |
+| `circleSelectedLetter` | `bool` | Is circle apply for the selected letter.                |
+| `circleSelectedBackgroundColor` | `Color` | Circle background color for the selected letter. |
+| `circleBorderRadius` | `double` | Border radius for the selected letter circle.    |
+| `backgroundColor` | `Color` | Alphabet list Background color                   |
+| `selectedColor` | `Color` | Selected alphabet color                          |
+| `unselectedColor` | `Color` | Unselected alphabet color                        |
+| `itemBuilder` | `Function(BuildContext, int)` | Function to build list items dynamically.        |
 
 ---
  

@@ -1,3 +1,10 @@
+# 1.2.0
+
+* Update Alphabetic list direction
+* Dynamic list height is now optional & can be customized
+* Updated Documentation
+
+
 ## 1.1.0
 
 * Updated dependencies
