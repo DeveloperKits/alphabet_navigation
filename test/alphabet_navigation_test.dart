@@ -11,7 +11,7 @@ void main() {
       backgroundColor: const Color(0xFF56A3A6),
       selectedColor: const Color(0xFF014D41),
       unselectedColor: const Color(0xFFF6FDFF),
-      itemBuilder: (context, index) {
+      itemBuilder: (context, index, dynamicList) {
         return Text('Item ${index + 1}');
       },
     );

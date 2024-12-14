@@ -44,14 +44,15 @@ class AlphabetListViewExample extends StatelessWidget {
         centerTitle: true,
       ),
       body: AlphabetNavigation(
-        stringList: stringList, /// Pass the string list for alphabet mapping
-        dynamicList: dynamicList, /// Pass the dynamic list for content
-        backgroundColor: Colors.blue, /// Background color for alphabet list
-        selectedColor: Colors.white, /// Selected alphabet color
-        circleSelectedLetter: true, /// Circle background color for the selected letter
-        listDirection: ListDirection.left, /// Direction of the list.
-        circleBorderRadius: 8, /// Border radius for the selected letter circle
-        itemBuilder: (context, index) {
+        stringList: stringList,
+        dynamicList: dynamicList,
+        showSearchField: true,
+        backgroundColor: Colors.blue,
+        selectedColor: Colors.white,
+        circleSelectedLetter: true,
+        listDirection: ListDirection.right,
+        circleBorderRadius: 8,
+        itemBuilder: (context, index, dynamicList) {
           /// Build the item widget
           return Container(
             alignment: Alignment.center,
