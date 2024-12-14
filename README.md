@@ -67,61 +67,15 @@ or manually configure pubspec.yml file
 
 Here’s how you can use the `AlphabetNavigation` widget in your app:
 ```dart
-class AlphabetListViewExample extends StatelessWidget {
-  const AlphabetListViewExample({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    /// A sample list of items to display
-    List<String> stringList = [
-      'Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape',
-      'Honeydew', 'Iceberg Lettuce', 'Jackfruit', 'Kiwi', 'Lemon', 'Mango',
-      'Nectarine', 'Orange', 'Papaya', 'Quince', 'Raspberry', 'Strawberry',
-      'Tomato', 'Ugli Fruit', 'Vanilla Bean', 'Watermelon', 'Xigua', 'Yam', 'Zucchini'
-    ];
-
-    /// The dynamic list (can be more complex, such as objects)
-    List<dynamic> dynamicList = stringList;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Alphabet List View Example'),
-        centerTitle: true,
-      ),
-      body: AlphabetNavigation(
-        stringList: stringList, /// Pass the string list for alphabet mapping
-        dynamicList: dynamicList, /// Pass the dynamic list for content
-        dynamicListHeight: 80, /// Dynamic list height (optional)
-        listDirection: ListDirection.left, /// Direction of the list (optional)
-        backgroundColor: Colors.blue, /// Background color for alphabet list (optional)
-        selectedColor: Colors.white, /// Selected alphabet color (optional)
-        unselectedColor: Colors.grey, /// Unselected alphabet color (optional)
-        circleSelectedLetter: true, /// Is circle apply for the selected letter. (optional)
-        circleSelectedBackgroundColor: Colors.blue, /// Circle background color for the selected letter (optional)
-        circleBorderRadius: 8, /// Border radius for the selected letter circle (optional)
-        itemBuilder: (context, index) {
-          /// Build the item widget
-          return ListTile(
-            dense: true,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            title: Text(
-              dynamicList[index],
-              style: const TextStyle(fontSize: 18),
-            ),
-            leading: CircleAvatar(
-              backgroundColor: Colors.blueAccent,
-              child: Text(
-                dynamicList[index][0],
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-          );
-        },
-      ),
-    );
-  }
-}
+AlphabetNavigation(
+  stringList: stringList, // Pass the string list for alphabet mapping
+  dynamicList: dynamicList, // Pass the dynamic list for content
+  dynamicListHeight: 80, // Dynamic list height (optional)
+  listDirection: ListDirection.left, // Direction of the list (optional)
+  showSearchField: true, // Toggle for search field (optional)
+  circleSelectedLetter: true, // Is circle apply for the selected letter (optional)
+  itemBuilder: (context, index, searchFilterList) {}, // Item builder
+)
 ```
 
 ### Parameters

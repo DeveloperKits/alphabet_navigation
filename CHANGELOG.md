@@ -1,3 +1,8 @@
+## 2.0.0
+
+* Initial release
+* added fully customizable search field 
+
 ## 1.2.1
 
 * Updated dependencies
@@ -13,7 +18,7 @@
 ## 1.1.0
 
 * Updated dependencies
-* Update Alphabetic list direction to left
+* Alphabetic list direction is now configurable
 * Update selected Alphabetic list style
 * More customization
 * Added support for all platforms

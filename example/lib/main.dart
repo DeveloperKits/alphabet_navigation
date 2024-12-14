@@ -47,11 +47,7 @@ class AlphabetListViewExample extends StatelessWidget {
         stringList: stringList,
         dynamicList: dynamicList,
         showSearchField: true,
-        backgroundColor: Colors.blue,
-        selectedColor: Colors.white,
         circleSelectedLetter: true,
-        listDirection: ListDirection.right,
-        circleBorderRadius: 8,
         itemBuilder: (context, index, dynamicList) {
           /// Build the item widget
           return Container(
