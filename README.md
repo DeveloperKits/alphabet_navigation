@@ -53,7 +53,7 @@ or manually configure pubspec.yml file
 1. Add the package to your `pubspec.yaml` file:
    ```yaml
    dependencies:
-     alphabet_navigation: ^1.0.0
+     alphabet_navigation: ^2.1.0 // replace with latest version
    ```
 
 2. Run the following command to get the package:
@@ -66,17 +66,117 @@ or manually configure pubspec.yml file
 ## Usage
 
 Here’s how you can use the `AlphabetNavigation` widget in your app:
+
+#### Example 1:
 ```dart
 AlphabetNavigation(
   stringList: stringList, // Pass the string list for alphabet mapping
   dynamicList: dynamicList, // Pass the dynamic list for content
   dynamicListHeight: 80, // Dynamic list height (optional)
-  listDirection: ListDirection.left, // Direction of the list (optional)
   showSearchField: true, // Toggle for search field (optional)
   circleSelectedLetter: true, // Is circle apply for the selected letter (optional)
   itemBuilder: (context, index, searchFilterList) {}, // Item builder
 )
 ```
+
+#### Example 2:
+```dart
+AlphabetNavigation(
+  stringList: stringList, // Pass the string list for alphabet mapping
+  dynamicList: dynamicList, // Pass the dynamic list for content
+  searchFieldHintText: "Search here...", // Search field hint text
+  searchFieldTextStyle: TextStyle(
+   color: Colors.blue.shade800,
+   fontWeight: FontWeight.w500,
+   fontSize: 16,
+  ),
+  searchFieldHintTextStyle: TextStyle(
+    color: Colors.grey.shade300,
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+  ),
+  searchFieldIcon: Icon(Icons.search, color: Colors.blue.shade800,), // Search field icon
+  searchFieldEndIconColor: Colors.blue.shade800, // Search field clear icon color
+  listDirection: ListDirection.left, // Direction of the list. If [ListDirection.left], the list will be from right to left (optional)
+  showSearchField: true, // Toggle for search field (optional)
+  circleSelectedLetter: true, // Is circle apply for the selected letter (optional)
+  itemBuilder: (context, index, searchFilterList) {}, // Item builder
+)
+```
+
+#### Example 3:
+```dart
+AlphabetNavigation(
+  stringList: stringList, // Pass the string list for alphabet mapping
+  dynamicList: dynamicList, // Pass the dynamic list for content
+  showSearchField: true, // Toggle for search field (optional)
+  alphabetListBackgroundColor: Colors.tealAccent, // Alphabet list background color
+  selectedColor: Colors.white70, // Selected color for the alphabet
+  unselectedColor: Colors.black38, // Unselected color for the alphabet
+  circleSelectedLetter: true, // Is circle apply for the selected letter (optional)
+  circleSelectedBackgroundColor: Colors.blue, // Selected circle background color
+  itemBuilder: (context, index, searchFilterList) {}, // Item builder
+)
+```
+
+#### Example 4:
+```dart
+AlphabetNavigation(
+  stringList: stringList, // Pass the string list for alphabet mapping
+  dynamicList: dynamicList, // Pass the dynamic list for content
+  showSearchField: false, // Toggle for search field (optional)
+  circleSelectedLetter: false, // Is circle apply for the selected letter (optional)
+  itemBuilder: (context, index, searchFilterList) {}, // Item builder
+)
+```
+
+#### Example 4:
+```dart
+AlphabetNavigation(
+  stringList: stringList, // Pass the string list for alphabet mapping
+  dynamicList: dynamicList, // Pass the dynamic list for content
+  circleSelectedLetter: false, // Is circle apply for the selected letter (optional)
+  itemBuilder: (context, index, searchFilterList) {}, // Item builder
+)
+```
+
+#### Example 5:
+```dart
+AlphabetNavigation(
+  stringList: stringList, // Pass the string list for alphabet mapping
+  dynamicList: dynamicList, // Pass the dynamic list for content
+  circleSelectedLetter: false, // Is circle apply for the selected letter (optional)
+  alphabetListBackgroundColor: Colors.transparent, // Alphabet list background color
+  selectedColor: Colors.blue, // Selected color for the alphabet
+  unselectedColor: Colors.grey.shade600, // Unselected color for the alphabet
+  itemBuilder: (context, index, searchFilterList) {}, // Item builder
+)
+```
+
+#### Example 6:
+```dart
+AlphabetNavigation(
+  stringList: stringList, // Pass the string list for alphabet mapping
+  dynamicList: dynamicList, // Pass the dynamic list for content
+  showSearchField: true, // Toggle for search field (optional)
+  circleSelectedLetter: true, // Is circle apply for the selected letter (optional)
+  circleBorderRadius: 50.0, // Border radius for the selected letter circle and alphabet list border
+  scrollAnimationCurve: Curves.easeInCubic, // Scroll animation curve
+  itemBuilder: (context, index, searchFilterList) {}, // Item builder
+)
+```
+
+|                                                        Example 1                                                         |                                                        Example 2                                                         |                                                        Example 3                                                         |
+|:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/user-attachments/assets/e95d1516-4596-4756-b275-8111e65b13de" width = "150" height = "400"> | <img src="https://github.com/user-attachments/assets/19bdce32-36ce-4d60-8598-f04d4e2e5b06" width = "150" height = "400"> | <img src="https://github.com/user-attachments/assets/1e4aad9c-5c15-4cf5-a0a4-b038af5a4058" width = "150" height = "400"> |
+
+
+
+|                                                        Example 4                                                         |                                                        Example 5                                                         |                                                        Example 6                                                         |
+|:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/user-attachments/assets/9185002f-1c0e-4631-b0bd-5d22916bbdca" width = "150" height = "400"> | <img src="https://github.com/user-attachments/assets/6a59e2cb-56ae-414d-b069-928d8f863360" width = "150" height = "400"> | <img src="https://github.com/user-attachments/assets/703bafc6-379c-4ec7-afb6-35fa94974341" width = "150" height = "400"> |
+
+
 
 ### Parameters
 
