@@ -17,25 +17,24 @@
 - [x] A vertical alphabetical navigation bar for quick access to sections.
 - [x] Smooth scrolling to the desired section when an alphabet is selected.
 - [x] Fully customizable list items and navigation styles.
+- [x] Built-in search bar for filtering items dynamically.
+- [x] Search field is optional & can be customized.
+- [x] Dynamic list height is optional & can be customized.
+- [x] Alphabetic list direction is configurable.
+- [x] Allow users to easily configure colors, fonts, and styles.
 - [x] Lightweight and easy to integrate into any Flutter project.
 - [x] Compatible with all platforms.
+- [x] Clear documentation.
 
 ---
 
+## Demo
 
-## Screenshot
-
-|                                                            Circular Selected Item                                                             |                                                           Drug by class                                                            |                                                  List Direction Left                                                                    |
-|:-------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/user-attachments/assets/d789dfda-1937-450c-9521-714b0732790c" width = "250" height = "450"> | <img src="https://github.com/user-attachments/assets/58fef2b1-30d5-46a5-9b39-dfcd383e5229" width = "250" height = "450"> | <img src="https://github.com/user-attachments/assets/243c432c-cfe2-44c0-87b7-3dd60220d56d" width = "250" height = "450"> |
-
-|                 Mac               |               Web
-|:---------------------------------:|:----------------------------------------:|
-|<img src="https://github.com/user-attachments/assets/fd8b0a5b-14d4-49dc-974a-237eb7cbfdc5" width = "400" height = "300">|<img src="https://github.com/user-attachments/assets/28e8b241-ea39-4576-bacd-34fb22d76805" width = "400" height = "300">|
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/00b77224-694e-4901-9375-793663d23aa6" alt="Demo GIF" height="500" width="300" style="border-radius: 10px">
+</p>
 
 ---
-
 
 ## Installation
 
@@ -166,38 +165,51 @@ AlphabetNavigation(
 )
 ```
 
+
 |                                                        Example 1                                                         |                                                        Example 2                                                         |                                                        Example 3                                                         |
 |:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/user-attachments/assets/e95d1516-4596-4756-b275-8111e65b13de" width = "150" height = "400"> | <img src="https://github.com/user-attachments/assets/19bdce32-36ce-4d60-8598-f04d4e2e5b06" width = "150" height = "400"> | <img src="https://github.com/user-attachments/assets/1e4aad9c-5c15-4cf5-a0a4-b038af5a4058" width = "150" height = "400"> |
+| <img src="https://github.com/user-attachments/assets/e95d1516-4596-4756-b275-8111e65b13de" width = "250" height = "450"> | <img src="https://github.com/user-attachments/assets/19bdce32-36ce-4d60-8598-f04d4e2e5b06" width = "250" height = "450"> | <img src="https://github.com/user-attachments/assets/1e4aad9c-5c15-4cf5-a0a4-b038af5a4058" width = "250" height = "450"> |
 
 
 
 |                                                        Example 4                                                         |                                                        Example 5                                                         |                                                        Example 6                                                         |
 |:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/user-attachments/assets/9185002f-1c0e-4631-b0bd-5d22916bbdca" width = "150" height = "400"> | <img src="https://github.com/user-attachments/assets/6a59e2cb-56ae-414d-b069-928d8f863360" width = "150" height = "400"> | <img src="https://github.com/user-attachments/assets/703bafc6-379c-4ec7-afb6-35fa94974341" width = "150" height = "400"> |
+| <img src="https://github.com/user-attachments/assets/9185002f-1c0e-4631-b0bd-5d22916bbdca" width = "250" height = "450"> | <img src="https://github.com/user-attachments/assets/6a59e2cb-56ae-414d-b069-928d8f863360" width = "250" height = "450"> | <img src="https://github.com/user-attachments/assets/703bafc6-379c-4ec7-afb6-35fa94974341" width = "250" height = "450"> |
 
 
 
 ### Parameters
 
-| Parameter     | Type                        | Description                                      |
-|---------------|-----------------------------|--------------------------------------------------|
-| `stringList`  | `List<String>`              | List of strings for alphabetical grouping.       |
-| `dynamicList` | `List<dynamic>`             | Data list to be displayed.                       |
-| `listDirection` | `ListDirection` | Direction of the list.                           |
-| `dynamicListHeight` | `double` | Dynamic list height.                             |
-| `circleSelectedLetter` | `bool` | Is circle apply for the selected letter.                |
-| `circleSelectedBackgroundColor` | `Color` | Circle background color for the selected letter. |
-| `circleBorderRadius` | `double` | Border radius for the selected letter circle.    |
-| `backgroundColor` | `Color` | Alphabet list Background color                   |
-| `selectedColor` | `Color` | Selected alphabet color                          |
-| `unselectedColor` | `Color` | Unselected alphabet color                        |
-| `itemBuilder` | `Function(BuildContext, int)` | Function to build list items dynamically.        |
+| Parameter     | Type                             | Description                                   |
+|---------------|----------------------------------|-----------------------------------------------|
+| `stringList`  | `List<String>`                   | List of strings for alphabetical grouping.    |
+| `dynamicList` | `List<dynamic>`                  | Data list to be displayed.                    |
+| `dynamicListHeight` | `double`                         | Dynamic list height.                          |
+| `listDirection` | `ListDirection`                  | Direction of the list.                        |
+| `showSearchField` | `bool`                           | Toggle for search field.                      |
+| `searchFieldTextStyle` | `TextStyle`                      | Search field text style.                      |
+| `searchFieldHintText` | `String`                         | Search field hint text.                       |
+| `searchFieldHintTextStyle` | `TextStyle`                      | Search field hint style.                      |
+| `searchFieldIcon` | `Icon`                           | Search field icon.                            |
+| `searchFieldBackgroundColor` | `Color`                          | Search field background color.                |
+| `searchFieldEndIconColor` | `Color`                          | Search field icon color.                      |
+| `alphabetListBackgroundColor` | `Color`                          | Alphabet list background color.               |
+| `selectedColor` | `Color`                          | Selected alphabet color                       |
+| `unselectedColor` | `Color`                          | Unselected alphabet color                     |
+| `circleSelectedLetter` | `bool`                           | Is circle apply for the selected letter.      |
+| `circleSelectedBackgroundColor` | `Color`                          | Circle background color for the selected letter. |
+| `circleBorderRadius` | `double`                         | Border radius for the selected letter circle  |
+| `scrollAnimationCurve` | `Curve`                          | Scroll animation curve.                       |
+| `itemBuilder` | `Function(BuildContext, int, dynamic)` | Function to build list items dynamically.     |
 
 ---
- 
-## Demo 
-https://github.com/user-attachments/assets/8f61ac4c-4937-4c98-b86d-36bf86ac0acd
+
+## Screenshot
+
+|                 Mac               |               Web
+|:---------------------------------:|:----------------------------------------:|
+|<img src="https://github.com/user-attachments/assets/fd8b0a5b-14d4-49dc-974a-237eb7cbfdc5" width = "400" height = "350">|<img src="https://github.com/user-attachments/assets/28e8b241-ea39-4576-bacd-34fb22d76805" width = "450" height = "350">|
+
 
 ---
 
@@ -205,8 +217,6 @@ https://github.com/user-attachments/assets/8f61ac4c-4937-4c98-b86d-36bf86ac0acd
 
 Here are some planned features for future releases:
 
-- **Search Functionality:** Built-in search bar for filtering items dynamically.
-- **Theme Options:** Allow users to easily configure colors, fonts, and styles.
 - **Accessibility Improvements:** Enhanced support for voice-over and screen readers.
 - **Horizontal Navigation:** Add support for horizontal alphabetical navigation.
 - **Custom Alphabet Set:** Support for custom navigation sets like ['A', 'B', 'C', '1', '2', '3'].
