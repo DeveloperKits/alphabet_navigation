@@ -40,14 +40,39 @@ class AlphabetListViewExample extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Alphabet List View Example'),
+        title: const Text('Alphabet Navigator'),
         centerTitle: true,
       ),
       body: AlphabetNavigation(
         stringList: stringList,
         dynamicList: dynamicList,
         showSearchField: true,
+        dynamicListHeight: 80,
+
+        searchFieldHintText: "Search here...",
+        searchFieldTextStyle: TextStyle(
+          color: Colors.blue.shade800,
+          fontWeight: FontWeight.w500,
+          fontSize: 16,
+        ),
+        searchFieldHintTextStyle: TextStyle(
+          color: Colors.grey.shade300,
+          fontWeight: FontWeight.w500,
+          fontSize: 16,
+        ),
+        searchFieldIcon: Icon(Icons.search, color: Colors.blue.shade800,),
+        searchFieldEndIconColor: Colors.blue.shade800,
+
+        listDirection: ListDirection.left,
+        alphabetListBackgroundColor: Colors.tealAccent,
+        selectedColor: Colors.white70,
+        unselectedColor: Colors.black38,
+        circleSelectedBackgroundColor: Colors.blue,
         circleSelectedLetter: true,
+        circleBorderRadius: 10.0,
+
+        scrollAnimationCurve: Curves.easeInCubic,
+
         itemBuilder: (context, index, dynamicList) {
           /// Build the item widget
           return Container(
@@ -62,12 +87,12 @@ class AlphabetListViewExample extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               title: Text(
                 dynamicList[index],
-                style: const TextStyle(fontSize: 18, color: Colors.black54,),
+                style: const TextStyle(fontSize: 18, color: Colors.black87,),
               ),
               leading: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: CircleAvatar(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: const Color(0xFF56A3A6),
                   child: Text(
                     dynamicList[index][0],
                     style: const TextStyle(color: Colors.white),

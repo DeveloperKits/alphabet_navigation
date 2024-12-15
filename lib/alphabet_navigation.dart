@@ -46,7 +46,7 @@ class AlphabetNavigation extends StatefulWidget {
   final Color searchFieldEndIconColor;
 
   /// Background color for alphabet list
-  final Color backgroundColor;
+  final Color alphabetListBackgroundColor;
 
   /// Background color for selected alphabet in the alphabet list
   final Color selectedColor;
@@ -84,7 +84,7 @@ class AlphabetNavigation extends StatefulWidget {
   /// * [searchFieldIcon] Search field icon (optional)
   /// * [searchFieldBackgroundColor] Search field background color (optional)
   /// * [searchFieldEndIconColor] Search field icon color (optional)
-  /// * [backgroundColor] Background color (optional)
+  /// * [alphabetListBackgroundColor] Background color (optional)
   /// * [selectedColor] Selected alphabet color (optional)
   /// * [unselectedColor] Unselected alphabet color (optional)
   /// * [circleSelectedLetter] Circle for the selected letter (optional)
@@ -116,10 +116,10 @@ class AlphabetNavigation extends StatefulWidget {
     ),
     this.searchFieldBackgroundColor = Colors.white,
     this.searchFieldEndIconColor = Colors.grey,
-    this.backgroundColor = const Color(0xFF56A3A6),
+    this.alphabetListBackgroundColor = const Color(0xFF56A3A6),
     this.selectedColor = const Color(0xFF014D41),
     this.unselectedColor = const Color(0xFFF6FDFF),
-    this.circleSelectedLetter = false,
+    this.circleSelectedLetter = true,
     this.circleSelectedBackgroundColor = Colors.amberAccent,
     this.circleBorderRadius = 8,
     this.scrollAnimationCurve = Curves.easeInOut,
@@ -282,8 +282,8 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
         bottom: 10,
       ),
       decoration: BoxDecoration(
-        color: widget.backgroundColor,
-        borderRadius: BorderRadius.circular(10),
+        color: widget.alphabetListBackgroundColor,
+        borderRadius: BorderRadius.circular(widget.circleBorderRadius),
       ),
       child: SingleChildScrollView(
         child: Column(
