@@ -1,6 +1,5 @@
 library alphabet_navigation;
 
-
 import 'package:flutter/material.dart';
 
 /// Alphabet list direction enum for more customization.
@@ -17,6 +16,7 @@ enum ListDirection { left, right }
 class AlphabetNavigation extends StatefulWidget {
   final List<String> stringList;
   final List<dynamic> dynamicList;
+
   /// Height of the dynamic list
   final double dynamicListHeight;
 
@@ -26,32 +26,45 @@ class AlphabetNavigation extends StatefulWidget {
 
   /// Toggle for search field
   final bool showSearchField;
+
   /// Search field text style
   final TextStyle searchFieldTextStyle;
+
   /// Search field hint text
   final String searchFieldHintText;
+
   ///  search field hint style
   final TextStyle searchFieldHintTextStyle;
+
   /// Search field icon
   final Icon searchFieldIcon;
+
   /// Search field background color
   final Color searchFieldBackgroundColor;
+
   /// Search field icon color
-  final Color searchFieldIconColor;
+  final Color searchFieldEndIconColor;
 
   /// Background color for alphabet list
   final Color backgroundColor;
+
   /// Background color for selected alphabet in the alphabet list
   final Color selectedColor;
+
   /// Background color for unselected alphabet in the alphabet list
   final Color unselectedColor;
 
   /// Circle for the selected letter in the alphabet list
   final bool circleSelectedLetter;
+
   /// Background color for the selected letter in the alphabet list
   final Color circleSelectedBackgroundColor;
+
   /// Border radius for the selected letter circle
   final double circleBorderRadius;
+
+  /// Scroll animation curve for the list
+  final Curve scrollAnimationCurve;
 
   /// Item builder for dynamic list which returns a [Widget] for each item
   /// if [showSearchField] is true, the list will be filtered based on the search query
@@ -65,12 +78,19 @@ class AlphabetNavigation extends StatefulWidget {
   /// * [dynamicListHeight] Height of the dynamic list (optional)
   /// * [listDirection] Direction of the list. If [ListDirection.left], the list will be from right to left (optional)
   /// * [showSearchField] Toggle for search field (optional)
+  /// * [searchFieldTextStyle] Search field text style (optional)
+  /// * [searchFieldHintText] Search field hint text (optional)
+  /// * [searchFieldHintTextStyle] Search field hint style (optional)
+  /// * [searchFieldIcon] Search field icon (optional)
+  /// * [searchFieldBackgroundColor] Search field background color (optional)
+  /// * [searchFieldEndIconColor] Search field icon color (optional)
   /// * [backgroundColor] Background color (optional)
   /// * [selectedColor] Selected alphabet color (optional)
   /// * [unselectedColor] Unselected alphabet color (optional)
   /// * [circleSelectedLetter] Circle for the selected letter (optional)
   /// * [circleSelectedBackgroundColor] Background color for the selected letter (optional)
   /// * [circleBorderRadius] Border radius for the selected letter circle (optional)
+  /// * [scrollAnimationCurve] Scroll animation curve (optional)
   /// * [itemBuilder] Item builder for dynamic list which returns a [Widget] for each item
   const AlphabetNavigation({
     Key? key,
@@ -78,19 +98,31 @@ class AlphabetNavigation extends StatefulWidget {
     required this.dynamicList,
     this.dynamicListHeight = 70.0,
     this.listDirection = ListDirection.right,
-    this.showSearchField = false, /// Default to no search field
-    this.searchFieldTextStyle = const TextStyle(color: Colors.black54, fontSize: 16,),
+    this.showSearchField = false,
+
+    /// Default to no search field
+    this.searchFieldTextStyle = const TextStyle(
+      color: Colors.black54,
+      fontSize: 16,
+    ),
     this.searchFieldHintText = 'Search',
-    this.searchFieldHintTextStyle = const TextStyle(color: Colors.grey, fontSize: 16,),
-    this.searchFieldIcon = const Icon(Icons.search, color: Colors.grey,),
+    this.searchFieldHintTextStyle = const TextStyle(
+      color: Colors.grey,
+      fontSize: 16,
+    ),
+    this.searchFieldIcon = const Icon(
+      Icons.search,
+      color: Colors.grey,
+    ),
     this.searchFieldBackgroundColor = Colors.white,
-    this.searchFieldIconColor = Colors.grey,
+    this.searchFieldEndIconColor = Colors.grey,
     this.backgroundColor = const Color(0xFF56A3A6),
     this.selectedColor = const Color(0xFF014D41),
     this.unselectedColor = const Color(0xFFF6FDFF),
     this.circleSelectedLetter = false,
     this.circleSelectedBackgroundColor = Colors.amberAccent,
     this.circleBorderRadius = 8,
+    this.scrollAnimationCurve = Curves.easeInOut,
     required this.itemBuilder,
   }) : super(key: key);
 
@@ -101,12 +133,16 @@ class AlphabetNavigation extends StatefulWidget {
 class _AlphabetNavigationState extends State<AlphabetNavigation> {
   /// Scrolls to the selected alphabet letter when an alphabet is selected.
   late ScrollController _scrollController;
+
   /// Search field controller
   late TextEditingController _searchController;
+
   /// Maps alphabet to list index for faster lookup
   final Map<String, int> _alphabetMap = {};
+
   /// Default selected alphabet
   String _selectedAlphabet = 'A';
+
   /// Filtered alphabet list based on search
   List<dynamic> _filteredList = [];
 
@@ -115,7 +151,9 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
     super.initState();
     _scrollController = ScrollController();
     _searchController = TextEditingController();
-    _filteredList = widget.dynamicList; /// Initialize with full list
+    _filteredList = widget.dynamicList;
+
+    /// Initialize with full list
     _generateAlphabetMap();
   }
 
@@ -153,6 +191,7 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
     if (index != null) {
       /// Scroll to the selected letter in the list base on [dynamicListHeight]
       double targetOffset = index * widget.dynamicListHeight;
+
       /// Get current offset
       double currentOffset = _scrollController.offset;
 
@@ -165,7 +204,7 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
         duration: Duration(milliseconds: duration),
 
         /// Constant speed
-        curve: Curves.easeInQuint,
+        curve: widget.scrollAnimationCurve,
       );
     }
   }
@@ -178,7 +217,8 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
         _filteredList = widget.dynamicList;
       } else {
         _filteredList = widget.dynamicList
-            .where((item) => item.toString().toLowerCase().contains(query.toLowerCase()))
+            .where((item) =>
+                item.toString().toLowerCase().contains(query.toLowerCase()))
             .toList();
       }
     });
@@ -188,10 +228,8 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         /// Show search field if `showSearchField` is true
-        if(widget.showSearchField)
-          _showSearchField(),
+        if (widget.showSearchField) _showSearchField(),
 
         Expanded(
           child: widget.listDirection == ListDirection.left
@@ -311,7 +349,6 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
     );
   }
 
-
   /// search field where user can type in the search bar to filter the list
   /// and scroll to the selected letter when an alphabet is selected
   Widget _showSearchField() {
@@ -321,11 +358,13 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
       decoration: BoxDecoration(
         color: widget.searchFieldBackgroundColor,
         borderRadius: BorderRadius.circular(10.0),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Colors.grey,
             blurRadius: 2,
-            offset: const Offset(1, 2.5), // changes position of shadow
+            offset: Offset(1, 2.5),
+
+            /// changes position of shadow
           ),
         ],
       ),
@@ -344,7 +383,10 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
             onTap: _clearSearch,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3.0),
-              child: Icon(Icons.clear, color: widget.searchFieldIconColor,),
+              child: Icon(
+                Icons.clear,
+                color: widget.searchFieldEndIconColor,
+              ),
             ),
           ),
         ),
@@ -352,6 +394,7 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
     );
   }
 
+  /// clears the search field text and filters the list
   void _clearSearch() {
     _searchController.clear();
     _filterList('');
@@ -361,8 +404,9 @@ class _AlphabetNavigationState extends State<AlphabetNavigation> {
   void dispose() {
     /// Dispose of the scroll controller when the widget is disposed to avoid memory leaks
     _scrollController.dispose();
-    _searchController.dispose(); /// Dispose the search controller
+    _searchController.dispose();
+
+    /// Dispose the search controller
     super.dispose();
   }
-
 }
