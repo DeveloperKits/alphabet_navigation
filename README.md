@@ -1,6 +1,6 @@
 # Alphabet Navigation
 
-![](https://github.com/user-attachments/assets/f02d6c2b-c101-462e-afb4-befd0ce1761f)
+![](https://github.com/user-attachments/assets/291a2646-0171-4ca2-a5d1-ccf911860a73)
 
 [![License](https://img.shields.io/github/license/DeveloperKits/alphabet_navigation?style=flat-square)](https://github.com/DeveloperKits/alphabet_navigation?tab=MIT-1-ov-file)
 [![GitHub Contributors](https://img.shields.io/github/contributors/DeveloperKits/alphabet_navigation)](https://github.com/DeveloperKits/alphabet_navigation/graphs/contributors)
@@ -177,6 +177,7 @@ AlphabetNavigation(
 | <img src="https://github.com/user-attachments/assets/9185002f-1c0e-4631-b0bd-5d22916bbdca" width = "250" height = "450"> | <img src="https://github.com/user-attachments/assets/6a59e2cb-56ae-414d-b069-928d8f863360" width = "250" height = "450"> | <img src="https://github.com/user-attachments/assets/703bafc6-379c-4ec7-afb6-35fa94974341" width = "250" height = "450"> |
 
 
+---
 
 ### Parameters
 
@@ -201,15 +202,6 @@ AlphabetNavigation(
 | `circleBorderRadius` | `double`                         | Border radius for the selected letter circle  |
 | `scrollAnimationCurve` | `Curve`                          | Scroll animation curve.                       |
 | `itemBuilder` | `Function(BuildContext, int, dynamic)` | Function to build list items dynamically.     |
-
----
-
-## Screenshot
-
-|                 Mac               |               Web
-|:---------------------------------:|:----------------------------------------:|
-|<img src="https://github.com/user-attachments/assets/fd8b0a5b-14d4-49dc-974a-237eb7cbfdc5" width = "400" height = "350">|<img src="https://github.com/user-attachments/assets/28e8b241-ea39-4576-bacd-34fb22d76805" width = "450" height = "350">|
-
 
 ---
 
