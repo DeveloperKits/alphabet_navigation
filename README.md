@@ -27,11 +27,11 @@
 
 |                                                            Circular Selected Item                                                             |                                                           Drug by class                                                            |                                                  List Direction Left                                                                    |
 |:-------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/user-attachments/assets/d789dfda-1937-450c-9521-714b0732790c" width = "250"> | <img src="https://github.com/user-attachments/assets/58fef2b1-30d5-46a5-9b39-dfcd383e5229" width = "250"> | <img src="https://github.com/user-attachments/assets/243c432c-cfe2-44c0-87b7-3dd60220d56d" width = "250"> |
+| <img src="https://github.com/user-attachments/assets/d789dfda-1937-450c-9521-714b0732790c" width = "250" height = "450"> | <img src="https://github.com/user-attachments/assets/58fef2b1-30d5-46a5-9b39-dfcd383e5229" width = "250" height = "450"> | <img src="https://github.com/user-attachments/assets/243c432c-cfe2-44c0-87b7-3dd60220d56d" width = "250" height = "450"> |
 
-|                 Mac               
-|:---------------------------------:|
-|<img src="https://github.com/user-attachments/assets/fd8b0a5b-14d4-49dc-974a-237eb7cbfdc5" width = "600">|
+|                 Mac               |               Web
+|:---------------------------------:|:----------------------------------------:|
+|<img src="https://github.com/user-attachments/assets/fd8b0a5b-14d4-49dc-974a-237eb7cbfdc5" width = "400" height = "300">|<img src="https://github.com/user-attachments/assets/28e8b241-ea39-4576-bacd-34fb22d76805" width = "400" height = "300">|
 
 
 ---
