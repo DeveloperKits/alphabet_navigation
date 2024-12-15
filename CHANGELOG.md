@@ -1,3 +1,11 @@
+## 2.1.0
+
+* Added parameter for scroll animation curve
+* Update Documentation - More visual document
+* Make circle selected background true by default
+* Alphabet list radius now depend on 'circleBorderRadius' value
+* Remove deprecated code
+
 ## 2.0.0
 
 * Initial release
